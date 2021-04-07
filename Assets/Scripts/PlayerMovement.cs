@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + controller.transform.forward * z;
+        Vector3 move = Vector3.ClampMagnitude((transform.right * x) + (controller.transform.forward * z), 1f);
 
         if (Input.GetButton("Sprint"))
         {

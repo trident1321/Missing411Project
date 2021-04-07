@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6520398756429983344}
   - component: {fileID: 6520398756429983343}
   - component: {fileID: 6520398756429983345}
+  - component: {fileID: 7995619012082861913}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6520398756429983339}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14bcf2916f6c0aa46bf6aa153da437a9, type: 3}
   m_Name: 
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6520398756429983339}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60856238ba94e9e4fa51347c5d0e8973, type: 3}
   m_Name: 
@@ -229,11 +230,28 @@ MonoBehaviour:
   speed: 12
   gravity: -19.62
   jumpHeight: 3
+  sprintModifier: 1.4
   groundCheck: {fileID: 6520398756718903442}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &7995619012082861913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520398756429983339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb15f560f4d5b6343a17dc0981f336ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseXInputName: Mouse X
+  mouseYInputName: Mouse Y
+  mouseSensitivity: 150
+  playerBody: {fileID: 6520398756752927033}
 --- !u!1 &6520398756718903441
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6520398756752927033}
   - component: {fileID: 6520398756752927032}
+  - component: {fileID: 2665117447405299980}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -311,8 +330,49 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3.8
   m_Radius: 0.6
-  m_SlopeLimit: 45
+  m_SlopeLimit: 80
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2665117447405299980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520398756752927031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a71b6c526265143a59b2f372caa4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalInputName: Horizontal
+  verticalInputName: Vertical
+  movementSpeed: 6
+  jumpFallOff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0038604736
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.99487305
+      value: 0.0070762634
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpMultiplier: 10
+  jumpKey: 32
